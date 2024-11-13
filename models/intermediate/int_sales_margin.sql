@@ -6,7 +6,7 @@ revenue,
 quantity,
 purchase_price,
 s.quantity*p.purchase_price AS purchase_cost,
-s.revenue - s.quantity*p.purchase_price AS margin
+ROUND(s.revenue - s.quantity*p.purchase_price,2) AS margin
 
 from {{ ref('stg_raw__sales') }} s
 
