@@ -47,7 +47,6 @@ sources:
                 - unique
                 - not_null
                     
-              
             - name: shipping_fee
               description: price of shipment paid by the customer
             - name: logcost
