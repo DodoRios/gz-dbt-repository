@@ -7,8 +7,50 @@ sources:
       tables:
       
         - name: sales
-          identifier: raw_gz_sales        
+          identifier: raw_gz_sales 
+          description: sales of GreenWeez / Primary key check orders_id, pdt_id
+          columns:
+            - name: date_date
+              description: Date of purchase
+            - name: orders_id
+              description: Foreign key to ship
+            - name: pdt_id
+              description: Foreign key to product
+            - name: revenue
+              description: The amount paid by the customer to purchase the product. Revenue = quantity * selling_price"
+            - name: quantity
+              description: Quantity of products in an order
+          tests:
+            - unique:
+                column_name: (orders_id, pdt_id)
+        
         - name: product
           identifier: raw_gz_product
+          description: list of products of GreenWeez
+          columns:
+            - name: products_id
+              description: Primary key
+              tests:
+                - unique
+                - not_null
+                    
+            - name: purchase_price
+              description: purchase price per product
+          
         - name: ship
           identifier: raw_gz_ship
+          description: shipping data for GreenWeez orders
+          columns:
+            - name: orders_id
+              description: Primary key
+              tests:
+                - unique
+                - not_null
+                    
+              
+            - name: shipping_fee
+              description: price of shipment paid by the customer
+            - name: log_cost
+              description: cost of preparing the parcel in the distribution centre/warehouse
+            - name: ship_cost
+              description: shipping cost paid by Greenweez to the carrier/logistics provider 
