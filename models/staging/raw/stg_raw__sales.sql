@@ -14,7 +14,7 @@ renamed as (
         orders_id,
         pdt_id,
         revenue,
-        quantity
+        CAST(quantity as int64) as quantity
 
     from source
 
